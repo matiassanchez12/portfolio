@@ -1,0 +1,14 @@
+{
+  "subtitle": "Let's work together!",
+  "title": "Contact",
+  "address": "Address",
+  "email": "Email",
+  "message-copy": "Copied!",
+  "message-error": "Please, complete all the fields",
+  "message-success": "Message sent!",
+  "message-fatal-error": "Error ocurred. I am working in that, please try later.",
+  "placeholder-name": "Your name",
+  "placeholder-email": "Email",
+  "placeholder-message": "Your message",
+  "btn-send": "Send"
+}

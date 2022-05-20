@@ -1,7 +1,12 @@
-import '../styles/globals.css'
+import Provider from "../provider/Provider";
+import { appWithTranslation } from "next-i18next";
 
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+  return (
+    <Provider>
+      <Component {...pageProps} />
+    </Provider>
+  );
 }
 
-export default MyApp
+export default appWithTranslation(MyApp);
