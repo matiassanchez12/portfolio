@@ -18,8 +18,6 @@ function CarrouselMobile({ projects }) {
           borderRadius="10px"
           bg={backgroundCard}
           border={borderCard}
-          w="450px"
-          maxW="100%"
           transition="all .3s ease-in-out"
           _hover={{ transform: "scale(1.05)" }}
           transform="scale(1)"
