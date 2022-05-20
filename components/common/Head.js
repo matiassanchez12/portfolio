@@ -2,7 +2,7 @@ import React from "react";
 import NextHead from "next/head";
 
 function Head() {
-  const description = "Portfolio personal en donde muestro mis proyectos y dejo mis medios de contacto";
+  const description = "Frontend Developer | Portfolio personal en donde muestro mis proyectos.";
   const type = "website";
   const pageTitle = "Matias Sanchez Portfolio";
   const metaImage = () => "/tasks.ico";

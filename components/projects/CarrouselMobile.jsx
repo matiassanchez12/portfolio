@@ -1,5 +1,5 @@
 import React from "react";
-import { GridItem, Img, Stack, Link, Text, Button, useColorModeValue } from "@chakra-ui/react";
+import { Img, Stack, Link, Text, Button, useColorModeValue } from "@chakra-ui/react";
 import { BsGithub } from "react-icons/bs";
 import { FiExternalLink } from "react-icons/fi";
 import ChakraCarousel from "../ui/carrousel";
@@ -13,11 +13,13 @@ function CarrouselMobile({ projects }) {
   return (
     <ChakraCarousel gap={32}>
       {projects.map((project, index) => (
-        <GridItem
+        <Stack
           key={index}
           borderRadius="10px"
           bg={backgroundCard}
           border={borderCard}
+          w="450px"
+          maxW="100%"
           transition="all .3s ease-in-out"
           _hover={{ transform: "scale(1.05)" }}
           transform="scale(1)"
@@ -61,16 +63,8 @@ function CarrouselMobile({ projects }) {
                 </Stack>
               ))}
             </Stack>
-            {/* <Stack direction="row" justifyContent="center" gap={2}>
-                      <Link _hover={{ color: "#afd7fb" }} href={project.urlRepo} target="_blank">
-                        <BsGithub size={20} />
-                      </Link>
-                      <Link _hover={{ color: "#afd7fb" }} href={project.urlDeploy} target="_blank">
-                        <FiExternalLink size={20} />
-                      </Link>
-                    </Stack> */}
           </Stack>
-        </GridItem>
+        </Stack>
       ))}
     </ChakraCarousel>
   );

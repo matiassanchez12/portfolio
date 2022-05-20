@@ -2,7 +2,7 @@
 
 import React, { useLayoutEffect, useCallback, useEffect, useState, useMemo, useRef } from "react";
 
-import { useMediaQuery, useTheme, Progress, VStack, Button, Flex, Box } from "@chakra-ui/react";
+import { useMediaQuery, useTheme, Progress, VStack, Button, Flex, Box, useColorModeValue } from "@chakra-ui/react";
 
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
 import { motion, useAnimation, useMotionValue } from "framer-motion";
@@ -106,6 +106,7 @@ const ChakraCarousel = ({ children, gap }) => {
 
 const Slider = ({ setTrackIsActive, initSliderWidth, setActiveItem, activeItem, constraint, itemWidth, positions, children, gap }) => {
   const [ref, { width }] = useBoundingRect();
+  const colorBtnArrows = useColorModeValue("gray.600", "gray.200");
 
   useLayoutEffect(() => initSliderWidth(Math.round(width)), [width, initSliderWidth]);
 
@@ -155,7 +156,14 @@ const Slider = ({ setTrackIsActive, initSliderWidth, setActiveItem, activeItem, 
       </Box>
 
       <Flex w={`${itemWidth}px`} mt={`${gap / 2}px`} mx="auto">
-        <Button onClick={handleDecrementClick} onFocus={handleFocus} mr={`${gap / 3}px`} color="gray.200" variant="link" minW={0}>
+        <Button
+          onClick={handleDecrementClick}
+          onFocus={handleFocus}
+          mr={`${gap / 3}px`}
+          color={colorBtnArrows}
+          variant="link"
+          minW={0}
+        >
           <FaArrowLeft boxSize={9} />
         </Button>
 
@@ -177,7 +185,7 @@ const Slider = ({ setTrackIsActive, initSliderWidth, setActiveItem, activeItem, 
           onClick={handleIncrementClick}
           onFocus={handleFocus}
           ml={`${gap / 3}px`}
-          color="gray.200"
+          color={colorBtnArrows}
           variant="link"
           zIndex={2}
           minW={0}

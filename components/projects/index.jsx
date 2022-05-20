@@ -18,7 +18,7 @@ function Projects() {
     delay: 200,
   });
   const animation = useAnimation();
-  const [isMobile] = useMediaQuery("(max-width: 48em)");
+  const [isMobile] = useMediaQuery("(max-width: 56em)");
   const colorSubtitle = useColorModeValue("blackAlpha.900", "gray.200");
   const colorTitle = useColorModeValue("#1775cc", "#afd7fb");
   const backgroundCard = useColorModeValue("white", "hsl(240deg 51% 57% / 61%)");
@@ -51,12 +51,12 @@ function Projects() {
             {t("title")}
           </Text>
         </Stack>
-        <Stack flex={1} flexDirection={{ base: "column", lg: "row" }} gap={4}>
-          <Grid templateColumns="repeat(auto-fit, minmax(250px, 1fr))" templateRows="repeat(auto-fit, 300px)" w="100%" gap={6}>
-            {isMobile ? (
-              <CarrouselMobile projects={projects} />
-            ) : (
-              projects.map((project, index) => (
+        <Stack flex={1} flexDirection={{ base: "column", xl: "row" }} gap={4}>
+          {isMobile ? (
+            <CarrouselMobile projects={projects} />
+          ) : (
+            <Grid templateColumns="repeat(auto-fit, minmax(250px, 1fr))" templateRows="repeat(auto-fit, 300px)" w="100%" gap={6}>
+              {projects.map((project, index) => (
                 <GridItem
                   key={index}
                   borderRadius="10px"
@@ -115,19 +115,11 @@ function Projects() {
                         </Stack>
                       ))}
                     </Stack>
-                    {/* <Stack direction="row" justifyContent="center" gap={2}>
-                      <Link _hover={{ color: "#afd7fb" }} href={project.urlRepo} target="_blank">
-                        <BsGithub size={20} />
-                      </Link>
-                      <Link _hover={{ color: "#afd7fb" }} href={project.urlDeploy} target="_blank">
-                        <FiExternalLink size={20} />
-                      </Link>
-                    </Stack> */}
                   </Stack>
                 </GridItem>
-              ))
-            )}
-          </Grid>
+              ))}
+            </Grid>
+          )}
         </Stack>
       </Stack>
     </motion.div>
