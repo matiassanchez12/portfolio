@@ -1,5 +1,5 @@
 import React from "react";
-import { Img, Stack, Link, Text, Button, useColorModeValue } from "@chakra-ui/react";
+import { Img, Stack, Link, Text, Button, Tag, useColorModeValue, Flex } from "@chakra-ui/react";
 import { BsGithub } from "react-icons/bs";
 import { FiExternalLink } from "react-icons/fi";
 import ChakraCarousel from "../ui/carrousel";
@@ -7,13 +7,12 @@ import ChakraCarousel from "../ui/carrousel";
 function CarrouselMobile({ projects }) {
   const backgroundCard = useColorModeValue("white", "hsl(240deg 51% 57% / 61%)");
   const borderCard = useColorModeValue("1.3px solid #0373d8", "none");
-  const borderMiniCard = useColorModeValue("1px solid hsl(240deg 82% 54%)", "1px solid #04b6ff");
-  const colorMiniCard = useColorModeValue("#0373d8", "#82d5f7");
 
   return (
     <ChakraCarousel gap={32}>
       {projects.map((project, index) => (
         <Stack
+          overflow="hidden"
           key={index}
           borderRadius="10px"
           bg={backgroundCard}
@@ -21,6 +20,8 @@ function CarrouselMobile({ projects }) {
           transition="all .3s ease-in-out"
           _hover={{ transform: "scale(1.05)" }}
           transform="scale(1)"
+          flex={1}
+          p={5}
         >
           <Stack position="relative">
             <Img src={project.img} alt="img" borderRadius="12px" p={2} height={160} w="100%" objectFit="cover" />
@@ -47,18 +48,9 @@ function CarrouselMobile({ projects }) {
             <Text textAlign="center">{project.name}</Text>
             <Stack direction="row" justifyContent="center" flexFlow="row wrap" gap={1}>
               {project.technologies.map((tech, index) => (
-                <Stack
-                  key={index}
-                  justifyContent="center"
-                  borderRadius={4}
-                  fontSize={13}
-                  p={1}
-                  color={colorMiniCard}
-                  h="24px"
-                  border={borderMiniCard}
-                >
-                  <Text>{tech}</Text>
-                </Stack>
+                <Tag key={index} size="sm" variant="outline" colorScheme="cyan">
+                  {tech}
+                </Tag>
               ))}
             </Stack>
           </Stack>

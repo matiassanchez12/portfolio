@@ -68,14 +68,14 @@ function Presentation() {
           </Button>
           <Menu>
             <MenuButton width="60px" as={Button} _focus={{ boxShadow: "none" }}>
-              <Image boxSize="2rem" borderRadius="full" src={`/${language}.svg`} alt="selected" mr="12px" />
+              <Image boxsize="2rem" borderRadius="full" src={`/${language}.svg`} alt="selected" mr="12px" />
             </MenuButton>
             <MenuList minW="60px" width="60px">
               <MenuItem minH="48px" onClick={() => handleChangeLanguage("es")}>
-                <Image boxSize="2rem" borderRadius="full" src="/es.svg" alt="es" mr="12px" />
+                <Image boxsize="2rem" borderRadius="full" src="/es.svg" alt="es" mr="12px" />
               </MenuItem>
               <MenuItem minH="48px" onClick={() => handleChangeLanguage("en")}>
-                <Image boxSize="2rem" borderRadius="full" src="/en.svg" alt="en" mr="12px" />
+                <Image boxsize="2rem" borderRadius="full" src="/en.svg" alt="en" mr="12px" />
               </MenuItem>
             </MenuList>
           </Menu>

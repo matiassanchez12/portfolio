@@ -155,7 +155,7 @@ const Slider = ({ setTrackIsActive, initSliderWidth, setActiveItem, activeItem, 
         {children}
       </Box>
 
-      <Flex w={`${itemWidth}px`} mt={`${gap / 2}px`} mx="auto">
+      <Flex w={`98%`} mt={`${gap / 2}px`} mx="auto">
         <Button
           onClick={handleDecrementClick}
           onFocus={handleFocus}
@@ -164,7 +164,7 @@ const Slider = ({ setTrackIsActive, initSliderWidth, setActiveItem, activeItem, 
           variant="link"
           minW={0}
         >
-          <FaArrowLeft boxSize={9} />
+          <FaArrowLeft boxsize={9} />
         </Button>
 
         <Progress
@@ -190,7 +190,7 @@ const Slider = ({ setTrackIsActive, initSliderWidth, setActiveItem, activeItem, 
           zIndex={2}
           minW={0}
         >
-          <FaArrowRight boxSize={9} />
+          <FaArrowRight boxsize={9} />
         </Button>
       </Flex>
     </>
@@ -216,7 +216,6 @@ const Track = ({
   const handleDragStart = () => setDragStartPosition(positions[activeItem]);
 
   const handleDragEnd = (_, info) => {
-    console.log(info);
     const distance = info.offset.x;
     const velocity = info.velocity.x * multiplier;
     const direction = velocity < 0 || distance < 0 ? 1 : -1;
