@@ -155,7 +155,7 @@ const Slider = ({ setTrackIsActive, initSliderWidth, setActiveItem, activeItem, 
         {children}
       </Box>
 
-      <Flex w={`98%`} mt={`${gap / 2}px`} mx="auto">
+      <Flex w={`${itemWidth}px`} mt={`${gap / 2}px`} mx="auto">
         <Button
           onClick={handleDecrementClick}
           onFocus={handleFocus}
