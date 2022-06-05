@@ -1,4 +1,4 @@
-import { Button, Grid, GridItem, Img, Link, Stack, Tag, Text, useColorModeValue, useMediaQuery } from "@chakra-ui/react";
+import { Button, Container, Grid, GridItem, Img, Link, Stack, Tag, Text, useColorModeValue, useMediaQuery } from "@chakra-ui/react";
 import { motion, useAnimation } from "framer-motion";
 import { useTranslation } from "next-i18next";
 import React from "react";
@@ -23,6 +23,7 @@ function Projects() {
   const colorTitle = useColorModeValue("#1775cc", "#afd7fb");
   const backgroundCard = useColorModeValue("white", "hsl(240deg 51% 57% / 61%)");
   const borderCard = useColorModeValue("1.3px solid #0373d8", "none");
+  const tagColors = ["blue", "cyan", "purple", "orange", "yellow", "green", "teal", "pink"];
 
   React.useEffect(() => {
     if (inView) {
@@ -40,7 +41,7 @@ function Projects() {
 
   return (
     <motion.div animate={animation}>
-      <Stack h={{ base: "80vh", lg: "125vh" }} minH="100%" id="Proyectos" ref={ref} gap={8} marginBottom={10}>
+      <Stack h={{ base: "80vh", lg: "100%" }} minH="100%" id="Proyectos" ref={ref} gap={8} marginBottom={10}>
         <Stack textAlign="center">
           <Text fontSize="1rem" letterSpacing=".5px" color={colorSubtitle}>
             {t("subtitle")}
@@ -49,11 +50,24 @@ function Projects() {
             {t("title")}
           </Text>
         </Stack>
-        <Stack flex={1} flexDirection={{ base: "column", xl: "row" }} gap={4}>
+        <Container
+          flex={1}
+          flexDirection={{ base: "column", xl: "row" }}
+          py={8}
+          maxW={{
+            base: "100%",
+            sm: "35rem",
+            md: "43.75rem",
+            lg: "57.5rem",
+            xl: "75rem",
+            xxl: "87.5rem",
+          }}
+          gap={4}
+        >
           {isMobile ? (
             <CarrouselMobile projects={projects} />
           ) : (
-            <Grid templateColumns="repeat(auto-fit, minmax(250px, 1fr))" templateRows="repeat(auto-fit, 300px)" w="100%" gap={6}>
+            <Grid templateColumns="repeat(auto-fit, minmax(250px, 1fr))" templateRows="repeat(auto-fit, 330px)" w="100%" gap={6}>
               {projects.map((project, index) => (
                 <GridItem
                   key={index}
@@ -66,7 +80,7 @@ function Projects() {
                 >
                   <Stack position="relative">
                     <Img src={project.img} alt="img" borderRadius="12px" p={2} height={170} w="100%" objectFit="cover" />
-                    <Stack position="absolute" w="100%" h="100%" direction="row" alignItems="center" justifyContent="center" gap={2}>
+                    {/* <Stack position="absolute" w="100%" h="100%" direction="row" alignItems="center" justifyContent="center" gap={2}>
                       <Link href={project.urlRepo} target="_blank" _hover={{ outline: "none" }}>
                         <Button
                           w="6.5rem"
@@ -88,28 +102,42 @@ function Projects() {
                           _hover={{ backgroundColor: "#22699d", color: "#afd7fb" }}
                         >
                           <Text fontSize=".8rem" marginRight={1}>
-                            Web
+                            Deploy
                           </Text>
                           <FiExternalLink size={15} />
                         </Button>
                       </Link>
-                    </Stack>
+                    </Stack> */}
                   </Stack>
-                  <Stack p={2} gap={3}>
+                  <Stack p={2} gap={2}>
                     <Text textAlign="center">{project.name}</Text>
-                    <Stack direction="row" justifyContent="center" flexFlow="row wrap" gap={1}>
+                    <Stack minH={45} paddingInline="20px" direction="row" justifyContent="center" flexFlow="row wrap" gap={1}>
                       {project.technologies.map((tech, index) => (
-                        <Tag key={index} size="sm" variant="outline" colorScheme="cyan">
+                        <Tag key={index} h={5} size="sm" variant="solid" colorScheme={tagColors[index]}>
                           {tech}
                         </Tag>
                       ))}
+                    </Stack>
+                    <Stack direction="row" justifyContent="center">
+                      <Button size="sm" variant="outline" colorScheme="cyan">
+                        <Text fontWeight={400} fontSize=".8rem" marginRight={1}>
+                          Github
+                        </Text>
+                        <BsGithub size={15} />
+                      </Button>
+                      <Button size="sm" variant="outline" colorScheme="cyan">
+                        <Text fontWeight={400} fontSize=".8rem" marginRight={1}>
+                          Web
+                        </Text>
+                        <FiExternalLink size={15} />
+                      </Button>
                     </Stack>
                   </Stack>
                 </GridItem>
               ))}
             </Grid>
           )}
-        </Stack>
+        </Container>
       </Stack>
     </motion.div>
   );

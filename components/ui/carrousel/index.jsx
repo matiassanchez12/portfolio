@@ -1,10 +1,8 @@
-//TODO: Properly handle user tabbing
-
 import React, { useLayoutEffect, useCallback, useEffect, useState, useMemo, useRef } from "react";
 
-import { useMediaQuery, useTheme, Progress, VStack, Button, Flex, Box, useColorModeValue } from "@chakra-ui/react";
+import { useMediaQuery, useTheme, Progress, VStack, Button, Flex, Box } from "@chakra-ui/react";
 
-import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { motion, useAnimation, useMotionValue } from "framer-motion";
 import { useBoundingRect } from "./hooks";
 import { percentage } from "./utils";
@@ -106,7 +104,6 @@ const ChakraCarousel = ({ children, gap }) => {
 
 const Slider = ({ setTrackIsActive, initSliderWidth, setActiveItem, activeItem, constraint, itemWidth, positions, children, gap }) => {
   const [ref, { width }] = useBoundingRect();
-  const colorBtnArrows = useColorModeValue("gray.600", "gray.200");
 
   useLayoutEffect(() => initSliderWidth(Math.round(width)), [width, initSliderWidth]);
 
@@ -156,15 +153,8 @@ const Slider = ({ setTrackIsActive, initSliderWidth, setActiveItem, activeItem, 
       </Box>
 
       <Flex w={`${itemWidth}px`} mt={`${gap / 2}px`} mx="auto">
-        <Button
-          onClick={handleDecrementClick}
-          onFocus={handleFocus}
-          mr={`${gap / 3}px`}
-          color={colorBtnArrows}
-          variant="link"
-          minW={0}
-        >
-          <FaArrowLeft boxsize={9} />
+        <Button onClick={handleDecrementClick} onFocus={handleFocus} mr={`${gap / 3}px`} color="gray.200" variant="link" minW={0}>
+          <FaArrowLeft boxSize={9} />
         </Button>
 
         <Progress
@@ -185,12 +175,12 @@ const Slider = ({ setTrackIsActive, initSliderWidth, setActiveItem, activeItem, 
           onClick={handleIncrementClick}
           onFocus={handleFocus}
           ml={`${gap / 3}px`}
-          color={colorBtnArrows}
+          color="gray.200"
           variant="link"
           zIndex={2}
           minW={0}
         >
-          <FaArrowRight boxsize={9} />
+          <FaArrowRight boxSize={9} />
         </Button>
       </Flex>
     </>
@@ -216,6 +206,7 @@ const Track = ({
   const handleDragStart = () => setDragStartPosition(positions[activeItem]);
 
   const handleDragEnd = (_, info) => {
+    console.log(info);
     const distance = info.offset.x;
     const velocity = info.velocity.x * multiplier;
     const direction = velocity < 0 || distance < 0 ? 1 : -1;
@@ -343,7 +334,6 @@ const Item = ({ setTrackIsActive, setActiveItem, activeItem, constraint, itemWid
         mr: `${gap}px`,
       }}
       py="4px"
-      justifyContent="center"
     >
       {children}
     </Flex>
