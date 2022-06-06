@@ -50,9 +50,8 @@ function Projects() {
             {t("title")}
           </Text>
         </Stack>
-        <Container
+        <Stack
           flex={1}
-          flexDirection={{ base: "column", xl: "row" }}
           py={8}
           maxW={{
             base: "100%",
@@ -137,7 +136,7 @@ function Projects() {
               ))}
             </Grid>
           )}
-        </Container>
+        </Stack>
       </Stack>
     </motion.div>
   );
