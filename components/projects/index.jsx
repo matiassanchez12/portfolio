@@ -90,18 +90,23 @@ function Projects() {
                     ))}
                   </Stack>
                   <Stack direction="row" justifyContent="center">
-                    <Button size="sm" variant="outline" colorScheme="cyan">
-                      <Text fontWeight={400} fontSize=".8rem" marginRight={1}>
-                        Github
-                      </Text>
-                      <BsGithub size={15} />
-                    </Button>
-                    <Button size="sm" variant="outline" colorScheme="cyan">
-                      <Text fontWeight={400} fontSize=".8rem" marginRight={1}>
-                        Web
-                      </Text>
-                      <FiExternalLink size={15} />
-                    </Button>
+                    <Link href={project.urlRepo} _hover={{ textDecoration: "none" }} target="_blank">
+                      <Button size="sm" variant="outline" colorScheme="cyan">
+                        <Text fontWeight={400} fontSize=".8rem" marginRight={1}>
+                          Github
+                        </Text>
+                        <BsGithub size={15} />
+                      </Button>
+                    </Link>
+
+                    <Link href={project.urlDeploy} _hover={{ textDecoration: "none" }} target="_blank">
+                      <Button size="sm" variant="outline" colorScheme="cyan">
+                        <Text fontWeight={400} fontSize=".8rem" marginRight={1}>
+                          Web
+                        </Text>
+                        <FiExternalLink size={15} />
+                      </Button>
+                    </Link>
                   </Stack>
                 </Stack>
               </GridItem>
