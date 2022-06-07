@@ -41,7 +41,7 @@ function Projects() {
 
   return (
     <motion.div animate={animation}>
-      <Stack h={{ base: "80vh", lg: "100%" }} minH="100%" id="Proyectos" ref={ref} gap={8} marginBottom={10}>
+      <Stack h="100%" minH="100%" id="Proyectos" ref={ref} gap={8} marginBottom={10}>
         <Stack textAlign="center">
           <Text fontSize="1rem" letterSpacing=".5px" color={colorSubtitle}>
             {t("subtitle")}
@@ -50,7 +50,7 @@ function Projects() {
             {t("title")}
           </Text>
         </Stack>
-        <Stack
+        <Container
           flex={1}
           py={8}
           maxW={{
@@ -63,80 +63,52 @@ function Projects() {
           }}
           gap={4}
         >
-          {isMobile ? (
+          {/* {isMobile ? (
             <CarrouselMobile projects={projects} />
-          ) : (
-            <Grid templateColumns="repeat(auto-fit, minmax(250px, 1fr))" templateRows="repeat(auto-fit, 330px)" w="100%" gap={6}>
-              {projects.map((project, index) => (
-                <GridItem
-                  key={index}
-                  borderRadius="10px"
-                  bg={backgroundCard}
-                  border={borderCard}
-                  transition="all .3s ease-in-out"
-                  _hover={{ transform: "scale(1.05)" }}
-                  transform="scale(1)"
-                >
-                  <Stack position="relative">
-                    <Img src={project.img} alt="img" borderRadius="12px" p={2} height={170} w="100%" objectFit="cover" />
-                    {/* <Stack position="absolute" w="100%" h="100%" direction="row" alignItems="center" justifyContent="center" gap={2}>
-                      <Link href={project.urlRepo} target="_blank" _hover={{ outline: "none" }}>
-                        <Button
-                          w="6.5rem"
-                          backgroundColor="#0b5184"
-                          color="white"
-                          _hover={{ backgroundColor: "#22699d", color: "#afd7fb" }}
-                        >
-                          <Text fontSize=".8rem" marginRight={1}>
-                            Github
-                          </Text>
-                          <BsGithub size={15} />
-                        </Button>
-                      </Link>
-                      <Link href={project.urlDeploy} target="_blank" _hover={{ outline: "none" }}>
-                        <Button
-                          w="6.5rem"
-                          backgroundColor="#0b5184"
-                          color="white"
-                          _hover={{ backgroundColor: "#22699d", color: "#afd7fb" }}
-                        >
-                          <Text fontSize=".8rem" marginRight={1}>
-                            Deploy
-                          </Text>
-                          <FiExternalLink size={15} />
-                        </Button>
-                      </Link>
-                    </Stack> */}
+          ) : ( */}
+          <Grid templateColumns="repeat(auto-fit, minmax(250px, 1fr))" templateRows="repeat(auto-fit, 330px)" w="100%" gap={6}>
+            {projects.map((project, index) => (
+              <GridItem
+                key={index}
+                borderRadius="10px"
+                bg={backgroundCard}
+                border={borderCard}
+                transition="all .3s ease-in-out"
+                _hover={{ transform: "scale(1.05)" }}
+                transform="scale(1)"
+              >
+                <Stack position="relative">
+                  <Img src={project.img} alt="img" borderRadius="12px" p={2} height={170} w="100%" objectFit="cover" />
+                </Stack>
+                <Stack p={2} gap={2}>
+                  <Text textAlign="center">{project.name}</Text>
+                  <Stack minH={45} paddingInline="20px" direction="row" justifyContent="center" flexFlow="row wrap" gap={1}>
+                    {project.technologies.map((tech, index) => (
+                      <Tag key={index} h={5} size="sm" variant="solid" colorScheme={tagColors[index]}>
+                        {tech}
+                      </Tag>
+                    ))}
                   </Stack>
-                  <Stack p={2} gap={2}>
-                    <Text textAlign="center">{project.name}</Text>
-                    <Stack minH={45} paddingInline="20px" direction="row" justifyContent="center" flexFlow="row wrap" gap={1}>
-                      {project.technologies.map((tech, index) => (
-                        <Tag key={index} h={5} size="sm" variant="solid" colorScheme={tagColors[index]}>
-                          {tech}
-                        </Tag>
-                      ))}
-                    </Stack>
-                    <Stack direction="row" justifyContent="center">
-                      <Button size="sm" variant="outline" colorScheme="cyan">
-                        <Text fontWeight={400} fontSize=".8rem" marginRight={1}>
-                          Github
-                        </Text>
-                        <BsGithub size={15} />
-                      </Button>
-                      <Button size="sm" variant="outline" colorScheme="cyan">
-                        <Text fontWeight={400} fontSize=".8rem" marginRight={1}>
-                          Web
-                        </Text>
-                        <FiExternalLink size={15} />
-                      </Button>
-                    </Stack>
+                  <Stack direction="row" justifyContent="center">
+                    <Button size="sm" variant="outline" colorScheme="cyan">
+                      <Text fontWeight={400} fontSize=".8rem" marginRight={1}>
+                        Github
+                      </Text>
+                      <BsGithub size={15} />
+                    </Button>
+                    <Button size="sm" variant="outline" colorScheme="cyan">
+                      <Text fontWeight={400} fontSize=".8rem" marginRight={1}>
+                        Web
+                      </Text>
+                      <FiExternalLink size={15} />
+                    </Button>
                   </Stack>
-                </GridItem>
-              ))}
-            </Grid>
-          )}
-        </Stack>
+                </Stack>
+              </GridItem>
+            ))}
+          </Grid>
+          {/* )} */}
+        </Container>
       </Stack>
     </motion.div>
   );
