@@ -16,7 +16,7 @@ export const projects = [
   {
     name: "Portfolio Personal",
     urlRepo: "https://github.com/matiassanchez12/personal-portfolio",
-    urlDeploy: "https://portfolio-2-xi.vercel.app/",
+    urlDeploy: "https://matiassanchez.dev/es",
     img: "/portfolio.png",
     technologies: ["React", "Next", "Chakra UI", "Framer Motion"],
   },
