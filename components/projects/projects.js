@@ -15,7 +15,7 @@ export const projects = [
   },
   {
     name: "Portfolio Personal",
-    urlRepo: "https://github.com/matiassanchez12/personal-portfolio",
+    urlRepo: "https://github.com/matiassanchez12/portfolio",
     urlDeploy: "https://matiassanchez.dev/es",
     img: "/portfolio.png",
     technologies: ["React", "Next", "Chakra UI", "Framer Motion"],
