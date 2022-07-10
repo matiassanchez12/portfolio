@@ -40,7 +40,7 @@ function Habilities() {
 
   return (
     <motion.div animate={animation}>
-      <Stack h={{ base: "150vh", lg: "80vh" }} id="Habilidades" ref={ref} gap={6}>
+      <Stack h={{ base: "150vh", lg: "100vh" }} id="Habilidades" ref={ref} gap={6}>
         <Stack textAlign="center">
           <Text fontSize="1rem" letterSpacing=".5px" color={colorSubtitle}>
             {t("subtitle")}
