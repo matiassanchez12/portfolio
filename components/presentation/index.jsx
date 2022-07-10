@@ -31,25 +31,23 @@ function Presentation() {
   const { ref, inView } = useInView({
     threshold: 0.2,
     trackVisibility: true,
-    delay: 200,
+    delay: 100,
   });
   const animation = useAnimation();
+
+  React.useEffect(() => {
+    animation.start({ y: 0, opacity: 0 });
+  }, []);
 
   React.useEffect(() => {
     if (inView) {
       setCurrentTarget(0);
       animation.start({
-        y: 0,
+        y: 20,
         opacity: 1,
         transition: {
           duration: 1,
         },
-      });
-    }
-    if (!inView) {
-      animation.start({
-        y: -40,
-        opacity: 0,
       });
     }
   }, [inView, animation, setCurrentTarget]);

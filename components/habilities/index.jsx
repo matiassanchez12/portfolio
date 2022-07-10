@@ -13,13 +13,17 @@ function Habilities() {
   const { ref, inView } = useInView({
     threshold: 0.2,
     trackVisibility: true,
-    delay: 200,
+    delay: 100,
   });
   const animation = useAnimation();
   const colorSubtitle = useColorModeValue("blackAlpha.900", "gray.200");
   const colorTitle = useColorModeValue("#1775cc", "#afd7fb");
   const bgCard = useColorModeValue("#dee6ff", "#25315a");
   const colorCard = useColorModeValue("#00507e", "blue.100");
+
+  React.useEffect(() => {
+    animation.start({ y: 0, opacity: 0 });
+  }, []);
 
   React.useEffect(() => {
     if (inView) {
@@ -32,12 +36,11 @@ function Habilities() {
         },
       });
     }
-    if (!inView) animation.start({ y: 0, opacity: 0 });
   }, [inView, animation, setCurrentTarget]);
 
   return (
     <motion.div animate={animation}>
-      <Stack h="100%" minH="100vh" id="Habilidades" ref={ref}>
+      <Stack h={{ base: "150vh", lg: "80vh" }} id="Habilidades" ref={ref} gap={6}>
         <Stack textAlign="center">
           <Text fontSize="1rem" letterSpacing=".5px" color={colorSubtitle}>
             {t("subtitle")}
@@ -47,7 +50,7 @@ function Habilities() {
           </Text>
         </Stack>
         <Stack w="100%" h="100%" paddingTop={10}>
-          <Stack direction="row" flexFlow="row wrap" justifyContent="center" alignItems="center" gap={4}>
+          <Stack direction="row" flexFlow="row wrap" justifyContent="center" alignItems="center" gap={{ base: 6, md: 4 }}>
             {habilities.map((habilitie, index) => (
               <Stack
                 key={index}

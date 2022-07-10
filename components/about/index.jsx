@@ -10,15 +10,17 @@ function About() {
   const { setCurrentTarget } = React.useContext(Context);
   const { t } = useTranslation("about");
   const { ref, inView } = useInView({
-    threshold: 0.2,
+    threshold: 0.1,
     trackVisibility: true,
-    delay: 200,
+    delay: 100,
   });
   const animation = useAnimation();
   const colorSubtitle = useColorModeValue("blackAlpha.900", "gray.200");
   const colorTitle = useColorModeValue("#1775cc", "#afd7fb");
-  const backgroundBtn = useColorModeValue("hsl(240deg 100% 68%)");
-  const colorBtn = useColorModeValue("#5252ff", "hsl(231, 69%, 90%)");
+
+  React.useEffect(() => {
+    animation.start({ y: 0, opacity: 0 });
+  }, []);
 
   React.useEffect(() => {
     if (inView) {
@@ -31,12 +33,11 @@ function About() {
         },
       });
     }
-    if (!inView) animation.start({ y: 0, opacity: 0 });
   }, [inView, animation, setCurrentTarget]);
 
   return (
     <motion.div animate={animation}>
-      <Stack h="120vh" id="Sobre mí" ref={ref} gap={8} mt={16}>
+      <Stack h={{ base: "120vh", md: "100vh" }} id="Sobre mí" ref={ref} gap={16} mt={16}>
         <Stack textAlign="center">
           <Text fontSize="1rem" letterSpacing=".5px" color={colorSubtitle}>
             {t("subtitle")}
@@ -61,7 +62,7 @@ function About() {
               zIndex={2}
             />
           </Stack>
-          <Stack flex={2} gap={4} textAlign={{ base: "center", lg: "justify" }} alignItems="center">
+          <Stack flex={2} gap={8} textAlign={{ base: "center", lg: "justify" }} alignItems="center">
             <Text fontSize={{ base: ".9rem", lg: "1rem" }} lineHeight={1.7} maxW={650} letterSpacing={1.2}>
               {t("content-1")}
               <br />

@@ -14,7 +14,7 @@ function Contact() {
   const { ref, inView } = useInView({
     threshold: 0.2,
     trackVisibility: true,
-    delay: 200,
+    delay: 100,
   });
   const animation = useAnimation();
   const toast = useToast();
@@ -23,7 +23,10 @@ function Contact() {
   const colorCard = useColorModeValue("#131a31", "gray.300");
   const bgCard = useColorModeValue("#d4d9f7", "#25315a");
 
-  // #d4d9f7
+  React.useEffect(() => {
+    animation.start({ y: 0, opacity: 0 });
+  }, []);
+
   React.useEffect(() => {
     if (inView) {
       setCurrentTarget(4);
@@ -35,7 +38,6 @@ function Contact() {
         },
       });
     }
-    if (!inView) animation.start({ y: 0, opacity: 0 });
   }, [inView, animation, setCurrentTarget]);
 
   const handleClick = () => {
@@ -50,7 +52,7 @@ function Contact() {
 
   return (
     <motion.div animate={animation}>
-      <Stack h={{ base: "100vh", lg: "65vh" }} id="Contacto" gap={6} ref={ref} paddingTop={6}>
+      <Stack h={{ base: "100vh", lg: "100%" }} id="Contacto" gap={6} ref={ref} paddingTop={6}>
         <Stack textAlign="center">
           <Text fontSize="1rem" letterSpacing=".5px" color={colorSubtitle}>
             {t("subtitle")}
@@ -60,8 +62,8 @@ function Contact() {
           </Text>
         </Stack>
         <Stack flex={1} direction="row" justifyContent="center" gap={6} flexFlow="row wrap">
-          <Stack gap={1} direction={{ base: "row", lg: "column" }}>
-            <Stack borderRadius={5} bg={bgCard} direction="row" alignItems="center" p={3} gap={3}>
+          <Stack gap={1} w={{ base: "100%", md: "initial" }}>
+            <Stack borderRadius={5} bg={bgCard} direction="row" alignItems="center" boxSizing="content-box" p={3} gap={3}>
               <FaMapMarkerAlt size={20} />
               <Stack>
                 <Text fontSize="0.8rem">{t("address")}</Text>

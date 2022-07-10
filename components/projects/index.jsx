@@ -13,9 +13,9 @@ function Projects() {
   const { setCurrentTarget } = React.useContext(Context);
   const { t } = useTranslation("projects");
   const { ref, inView } = useInView({
-    threshold: 0.2,
+    threshold: 0.1,
     trackVisibility: true,
-    delay: 200,
+    delay: 100,
   });
   const animation = useAnimation();
   const [isMobile] = useMediaQuery("(max-width: 48em)");
@@ -24,6 +24,10 @@ function Projects() {
   const backgroundCard = useColorModeValue("white", "hsl(240deg 51% 57% / 61%)");
   const borderCard = useColorModeValue("1.3px solid #0373d8", "none");
   const tagColors = ["blue", "cyan", "purple", "orange", "yellow", "green", "teal", "pink"];
+
+  React.useEffect(() => {
+    animation.start({ y: 0, opacity: 0 });
+  }, []);
 
   React.useEffect(() => {
     if (inView) {
@@ -36,12 +40,11 @@ function Projects() {
         },
       });
     }
-    if (!inView) animation.start({ y: 0, opacity: 0 });
   }, [inView, animation, setCurrentTarget]);
 
   return (
     <motion.div animate={animation}>
-      <Stack h="100%" minH="100%" id="Proyectos" ref={ref} gap={8} marginBottom={10}>
+      <Stack h="100%" id="Proyectos" ref={ref} gap={8} marginBottom={28}>
         <Stack textAlign="center">
           <Text fontSize="1rem" letterSpacing=".5px" color={colorSubtitle}>
             {t("subtitle")}
